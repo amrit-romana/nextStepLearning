@@ -77,7 +77,12 @@ export default function DashboardPage() {
           .eq('student_id', studentData.id)
 
         if (enrollmentData) {
-          setEnrollments(enrollmentData as EnrollmentData[])
+          // Normalize the classes field - Supabase may return it as array, convert to single object
+          const normalizedEnrollments = enrollmentData.map((enrollment: any) => ({
+            ...enrollment,
+            classes: Array.isArray(enrollment.classes) ? enrollment.classes[0] : enrollment.classes
+          }))
+          setEnrollments(normalizedEnrollments as EnrollmentData[])
         }
       }
 

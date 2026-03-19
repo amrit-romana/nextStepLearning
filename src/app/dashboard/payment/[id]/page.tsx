@@ -235,7 +235,12 @@ export default function PaymentPage() {
         .single()
 
       if (data) {
-        setEnrollment(data as EnrollmentData)
+        // Normalize the classes field - Supabase may return it as array, convert to single object
+        const normalizedEnrollment = {
+          ...data,
+          classes: Array.isArray(data.classes) ? data.classes[0] : data.classes
+        }
+        setEnrollment(normalizedEnrollment as EnrollmentData)
       }
 
       setPageLoading(false)

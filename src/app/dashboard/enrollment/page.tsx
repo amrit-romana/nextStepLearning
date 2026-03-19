@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { useAuthStore } from '@/lib/store/auth'
 import Link from 'next/link'
-import { BookOpen, DollarSign } from 'lucide-react'
+import { BookOpen } from 'lucide-react'
 
 interface ClassData {
   id: string

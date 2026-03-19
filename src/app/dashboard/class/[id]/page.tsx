@@ -21,6 +21,7 @@ interface Schedule {
   start_time: string
   end_time: string
   zoom_link: string
+  notes?: string
 }
 
 interface Material {
